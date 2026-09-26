@@ -111,6 +111,35 @@
   .job .tags{ margin-top:12px; font-size:0.84rem; color:var(--text-muted); font-family:var(--font-mono); }
   .job .link-row{ margin-top:10px; font-size:0.88rem; display:flex; gap:16px; }
 
+  /* ---------- CAROUSEL (Consulting Experience) ---------- */
+  .carousel-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .carousel-controls{ display:flex; align-items:center; gap:12px; }
+  .carousel-count{ font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); min-width:38px; text-align:center; }
+  .carousel-hint{ font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; }
+  .carousel-viewport{ overflow:hidden; }
+  .carousel-track{ display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); }
+  .carousel-slide{ flex:0 0 100%; min-width:0; }
+  .carousel-slide .job{ margin-bottom:0; }
+  .carousel-btn{
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    width:30px; height:30px; border-radius:50%; border:1px solid var(--border);
+    background:#fff; color:var(--text-secondary); cursor:pointer; flex-shrink:0; box-sizing:border-box;
+    display:flex; align-items:center; justify-content:center; font-size:0.9rem; line-height:1; padding:0;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .carousel-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .carousel-dots{ display:flex; align-items:center; gap:8px; }
+  .carousel-dot{
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    display:block; box-sizing:border-box;
+    width:7px; height:7px; padding:0; margin:0; border-radius:4px; border:none; background:var(--border);
+    cursor:pointer; transition:width .25s ease, background .25s ease;
+  }
+  .carousel-dot.active{ width:20px; background:var(--accent); }
+  @media (max-width: 640px){
+    .carousel-head{ align-items:flex-start; }
+  }
+
   /* ---------- SKILLS ---------- */
   .competencies{ color:var(--text-secondary); font-size:0.95rem; line-height:1.9; }
   .skill-row{ display:flex; flex-direction:column; gap:4px; margin-bottom:16px; }
@@ -262,43 +291,85 @@
     </div>
   </div>
 
-  <div class="wrap" style="margin-top:36px;">
-    <div class="section-title">Consulting Experience</div>
-
-    <!-- BlueOcean first (most recent) -->
-    <div class="job reveal">
-      <div class="job-head">
-        <span class="company">BlueOcean</span>
-        <span class="meta">2026</span>
+  <div class="wrap" style="margin-top:44px; padding-top:36px; border-top:1px solid var(--border);">
+    <div class="carousel-head">
+      <div class="section-title" style="margin-bottom:0;">Consulting Experience</div>
+      <div class="carousel-controls">
+        <span class="carousel-count" id="consultingCount">1 / 3</span>
+        <div class="carousel-dots" id="consultingDots" role="tablist" aria-label="Consulting projects"></div>
+        <button class="carousel-btn" id="consultingPrev" type="button" aria-label="Previous consulting project">&#8592;</button>
+        <button class="carousel-btn" id="consultingNext" type="button" aria-label="Next consulting project">&#8594;</button>
       </div>
-      <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Software Engineering Consultant</div>
-      <ul>
-        <li>Building a business management platform alongside the company's website, integrating accounting and internal operational workflows.</li>
-        <li>Working directly with stakeholders to understand requirements, design the system, and take it toward production.</li>
-      </ul>
-      <div class="tags">Next.js &middot; TypeScript &middot; System Design &middot; Stakeholder Management</div>
-                   <div class="link-row">
-        <span class="muted">Private client repository</span>
-        <a href="https://www.blueoceanchemical.com/" target="_blank" rel="noopener">View live site</a>
-     
     </div>
-    </div>
+    <div class="carousel-hint">3 consulting engagements. Use the arrows or dots to browse.</div>
 
-    <div class="job reveal">
-      <div class="job-head">
-        <span class="company">Noviqa Management Services LLC, Dubai, UAE</span>
-        <span class="meta">July 2026</span>
-      </div>
-      <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;"> Software Engineer (Consulting)</div>
-      <ul>
-        <li>Engaged directly by a Dubai-based commercial receivables company to build and maintain their production web platform from the ground up, using Next.js, React, TypeScript, and Tailwind CSS, deployed on Vercel.</li>
-        <li>Engineered secure backend workflows including server-side validation, input sanitization, honeypot spam protection, and rate limiting, and hardened the app with CSP, HSTS, and X-Frame-Options headers.</li>
-        <li>Owned deployment end to end as the sole engineer, covering custom domain configuration, HTTPS/SSL, DNS, and authenticated email records, plus ongoing UI iteration and bug fixes as an independent consultant.</li>
-      </ul>
-      <div class="tags">Next.js &middot; TypeScript &middot; Tailwind CSS &middot; Vercel &middot; Security</div>
-      <div class="link-row">
-        <span class="muted">Private client repository</span>
-        <a href="https://www.noviqa.ae/" target="_blank" rel="noopener">View live site</a>
+    <div class="carousel reveal" id="consultingCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="consultingTrack">
+
+          <!-- BlueOcean -->
+          <div class="carousel-slide">
+            <div class="job">
+              <div class="job-head">
+                <span class="company">BlueOcean</span>
+                <span class="meta">2026</span>
+              </div>
+              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Software Engineering Consultant</div>
+              <ul>
+                <li>Building a business management platform alongside the company's website, integrating accounting and internal operational workflows.</li>
+                <li>Working directly with stakeholders to understand requirements, design the system, and take it toward production.</li>
+              </ul>
+              <div class="tags">Next.js &middot; TypeScript &middot; System Design &middot; Stakeholder Management</div>
+              <div class="link-row">
+                <a href="https://github.com/83Gh0st/Blueocean-erp" target="_blank" rel="noopener">View platform code</a>
+                <a href="https://github.com/83Gh0st/BlueOcean-" target="_blank" rel="noopener">View website code</a>
+                <a href="https://www.blueoceanchemical.com/" target="_blank" rel="noopener">View live site</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Noviqa -->
+          <div class="carousel-slide">
+            <div class="job">
+              <div class="job-head">
+                <span class="company">Noviqa Management Services LLC, Dubai, UAE</span>
+                <span class="meta">July 2026</span>
+              </div>
+              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Independent Software Engineer (Consulting)</div>
+              <ul>
+                <li>Engaged directly by a Dubai-based commercial receivables company to build and maintain their production web platform from the ground up, using Next.js, React, TypeScript, and Tailwind CSS, deployed on Vercel.</li>
+                <li>Engineered secure backend workflows including server-side validation, input sanitization, honeypot spam protection, and rate limiting, and hardened the app with CSP, HSTS, and X-Frame-Options headers.</li>
+                <li>Owned deployment end to end as the sole engineer, covering custom domain configuration, HTTPS/SSL, DNS, and authenticated email records, plus ongoing UI iteration and bug fixes as an independent consultant.</li>
+              </ul>
+              <div class="tags">Next.js &middot; TypeScript &middot; Tailwind CSS &middot; Vercel &middot; Security</div>
+              <div class="link-row">
+                <a href="https://github.com/83Gh0st/noviqa-website" target="_blank" rel="noopener">View code</a>
+                <a href="https://www.noviqa.ae/" target="_blank" rel="noopener">View live site</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RV Group Contracting -->
+          <div class="carousel-slide">
+            <div class="job">
+              <div class="job-head">
+                <span class="company">RV Group Contracting, Dubai &amp; Sharjah, UAE</span>
+                <span class="meta">2026</span>
+              </div>
+              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Independent Software Engineer (Consulting)</div>
+              <ul>
+                <li>Built and deployed the production marketing site for a multidisciplinary Civil, MEP &amp; HVAC contractor operating across Dubai, Sharjah, Ajman, and Abu Dhabi, using Next.js, React, TypeScript, and Tailwind CSS.</li>
+                <li>Structured the site around services, project process, per-emirate licensing and coverage, client roster, and FAQ sections, with an end-to-end enquiry/quote-request flow and SEO-optimized metadata and image delivery.</li>
+              </ul>
+              <div class="tags">Next.js &middot; TypeScript &middot; Tailwind CSS &middot; SEO</div>
+              <div class="link-row">
+                <span class="muted">Private client repository</span>
+                <a href="https://www.rvgroupcontracting.com/" target="_blank" rel="noopener">View live site</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -353,7 +424,21 @@
       <div class="section-title">Software Engineering &amp; Applied AI Projects</div>
 
       <div class="proj reveal">
-        <div class="proj-top"><h3>Vendora &mdash; Offline-First Billing &amp; Inventory Management Platform</h3><span class="kind">Kotlin &middot; Jetpack Compose &middot; Android</span></div>
+        <div class="proj-top"><h3>Trace: AI Finance Controller</h3><span class="kind">FastAPI &middot; Apache AGE &middot; Docker</span></div>
+        <p>A full-stack reconciliation platform combining a deterministic reconciliation engine, an AI-driven investigator, a real Apache AGE graph database for evidence traversal, and a rule-based policy engine that is the only component allowed to auto-close a case. An independent Verifier gate cross-checks the evidence chain before any auto-close is authorized, and every escalated case supports a real human approve/reject decision, persisted end to end. Built as a 7-view control room UI (vanilla JS, no build step) over a FastAPI/Postgres backend, orchestrated with Docker Compose and traced end-to-end with Phoenix/OpenTelemetry.</p>
+        <div class="meta-line">92.8% match rate and 94.4% resolution accuracy on a ground-truth-graded benchmark; adding the Verifier gate cut false auto-closes from 33.3% to 0%</div>
+        <div class="link-row"><a href="https://github.com/83Gh0st/Trace-V1" target="_blank" rel="noopener">View code</a></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top"><h3>Recoupa: Multi-Tenant Debt Recovery &amp; Sales CRM</h3><span class="kind">Next.js &middot; PostgreSQL &middot; Drizzle</span></div>
+        <p>A multi-tenant workspace for debt-collection agencies spanning the full recovery lifecycle: principal clients, debtors, and invoices; a prioritized calling queue with outcome tracking and auto-scheduled follow-ups; cheque/PDC tracking; ageing-based commission calculation on payments; disputes and payment corrections, plus a parallel sales pipeline from prospect through conversion, spreadsheet import for onboarding existing books, role-based access control, and a full audit trail.</p>
+        <div class="meta-line">Next.js 16 App Router + Drizzle ORM on serverless Postgres (Neon); every mutation is re-checked server-side against a role/permission matrix, not just hidden in the UI</div>
+        <div class="link-row"><a href="https://github.com/83Gh0st/recoupa" target="_blank" rel="noopener">View code</a></div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-top"><h3>Vendora: Offline-First Billing &amp; Inventory Management Platform</h3><span class="kind">Kotlin &middot; Jetpack Compose &middot; Android</span></div>
         <p>Built an Android app for local shops to manage products, inventory and billing, with barcode scanning and employee accounts, designed to work even without an internet connection. Developed the system end to end, including the app, local database, authentication, cloud backup and synchronization.</p>
         <div class="meta-line">Tech: Kotlin, Jetpack Compose, Room, Supabase</div>
         <div class="link-row"><a href="https://github.com/83Gh0st/Vendora" target="_blank" rel="noopener">View code</a></div>
@@ -374,6 +459,7 @@
       <div class="proj reveal">
         <div class="proj-top"><h3>Quizo: Customizable AI-Powered Quiz Platform</h3><span class="kind">Next.js &middot; MongoDB &middot; OpenAI</span></div>
         <p>A responsive quiz application supporting dynamic, AI-generated quizzes, scoring, and persistent user progress.</p>
+        <div class="link-row"><a href="https://github.com/83Gh0st/quizo" target="_blank" rel="noopener">View code</a></div>
       </div>
     </div>
 
@@ -552,6 +638,53 @@
     });
   }, { rootMargin: '-40% 0px -50% 0px' });
   sections.forEach(s => navIO.observe(s));
+
+  (function initCarousel(){
+    const track = document.getElementById('consultingTrack');
+    const dotsWrap = document.getElementById('consultingDots');
+    const prevBtn = document.getElementById('consultingPrev');
+    const nextBtn = document.getElementById('consultingNext');
+    const countEl = document.getElementById('consultingCount');
+    if (!track || !dotsWrap || !prevBtn || !nextBtn) return;
+
+    const slides = Array.from(track.children);
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Go to consulting project ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function update(){
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      if (countEl) countEl.textContent = (index + 1) + ' / ' + slides.length;
+    }
+    function goTo(i){
+      index = (i + slides.length) % slides.length;
+      update();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    let touchStartX = null;
+    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+      touchStartX = null;
+    });
+
+    update();
+  })();
 </script>
 </body>
 </html>
