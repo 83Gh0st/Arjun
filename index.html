@@ -1,692 +1,179 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Arjun Sasikumar</title>
-<meta name="description" content="Arjun Sasikumar. Electrical & Electronics Engineer and Applied AI/ML builder. Forward Deployed Engineering, Solutions Engineering, Industrial Data Science." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arjun Sasikumar | Applied AI Researcher and Engineer</title>
+<meta name="description" content="Arjun Sasikumar. Applied AI/ML researcher and engineer. Six papers at IEEE and Springer venues, industrial AI at Yokogawa, production software for clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;
-    --text:#16181d;
-    --text-secondary:#5f6368;
-    --text-muted:#8a8f98;
-    --border:#e3e5e8;
-    --border-soft:#edeef1;
-    --accent:#1a56db;
-    --accent-hover:#123fa8;
-    --font-body:'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
-    --measure:760px;
-    --wide:860px;
-    --nav-h:60px;
-  }
-  *,*::before,*::after{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0; background:var(--bg); color:var(--text);
-    font-family:var(--font-body); font-size:16px; line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{ color:var(--accent); text-decoration:none; }
-  a:hover{ text-decoration:underline; }
-  ul{ margin:0; padding:0; list-style:none; }
-  img{ max-width:100%; display:block; }
-  section{ scroll-margin-top:calc(var(--nav-h) + 12px); }
-  ::selection{ background:var(--accent); color:#fff; }
-  :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-
-  .wrap{ max-width:var(--measure); margin:0 auto; padding:0 20px; }
-  .wrap-wide{ max-width:var(--wide); margin:0 auto; padding:0 20px; }
-
-  h1,h2,h3{ font-weight:600; margin:0; color:var(--text); letter-spacing:-0.01em; }
-  h2{ font-size:1.3rem; }
-  h3{ font-size:1.05rem; }
-  p{ margin:0 0 12px; }
-  .muted{ color:var(--text-secondary); }
-
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.95); backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--border); height:var(--nav-h);
-  }
-  .nav-inner{
-    max-width:var(--wide); margin:0 auto; padding:0 20px; height:100%;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-name{ font-weight:600; font-size:0.95rem; color:var(--text); }
-  nav.links{ display:none; gap:22px; }
-  nav.links a{ color:var(--text-secondary); font-size:0.9rem; }
-  nav.links a:hover, nav.links a.active{ color:var(--text); text-decoration:none; }
-  .menu-toggle{
-    display:flex; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer; padding:8px;
-  }
-  .menu-toggle span{ width:20px; height:1.5px; background:var(--text); }
-  nav.links.mobile-open{
-    display:flex; flex-direction:column; position:fixed; top:var(--nav-h); left:0; right:0; bottom:0;
-    background:#fff; padding:24px 20px; gap:18px; z-index:49; overflow-y:auto;
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{ padding:52px 0 40px; border-bottom:1px solid var(--border); }
-  .hero h1{ font-size:clamp(1.9rem, 7vw, 2.6rem); }
-  .hero .role{ color:var(--text-secondary); font-size:1.05rem; margin-top:8px; }
-  .hero .desc{ color:var(--text-secondary); margin-top:18px; font-size:1rem; max-width:640px; }
-  .hero-links{ display:flex; gap:18px; flex-wrap:wrap; margin-top:22px; font-size:0.92rem; }
-
-  /* ---------- SECTION GENERIC ---------- */
-  .section{ padding:44px 0; border-bottom:1px solid var(--border); }
-  .section-title{
-    font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);
-    font-family:var(--font-mono); margin-bottom:20px;
-  }
-
-  .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
-  .reveal.in-view{ opacity:1; transform:translateY(0); }
-
-  /* ---------- ABOUT ---------- */
-  .about-row{ display:flex; flex-direction:column; gap:24px; }
-  .about-photo{ width:160px; height:160px; border-radius:10px; overflow:hidden; border:1px solid var(--border); flex-shrink:0; margin:0 auto; }
-  .about-photo img{ width:100%; height:100%; object-fit:cover; }
-  .about-text p{ color:var(--text-secondary); }
-  .about-text strong{ color:var(--text); font-weight:600; }
-  .stat-line{
-    display:flex; flex-wrap:wrap; gap:8px 0; margin-top:18px; font-size:0.92rem; color:var(--text-secondary);
-  }
-  .stat-line strong{ color:var(--text); font-weight:600; }
-  .stat-line .sep{ margin:0 10px; color:var(--border); }
-
-  /* ---------- EXPERIENCE ---------- */
-  .job{ margin-bottom:30px; }
-  .job:last-child{ margin-bottom:0; }
-  .job-head{ display:flex; flex-direction:column; gap:2px; }
-  .job-head .company{ font-weight:600; font-size:1rem; }
-  .job-head .meta{ color:var(--text-secondary); font-size:0.88rem; font-family:var(--font-mono); }
-  .job ul{ margin-top:12px; display:flex; flex-direction:column; gap:8px; }
-  .job li{ color:var(--text-secondary); padding-left:16px; position:relative; font-size:0.95rem; }
-  .job li::before{ content:"-"; position:absolute; left:0; color:var(--text-muted); }
-  .job .tags{ margin-top:12px; font-size:0.84rem; color:var(--text-muted); font-family:var(--font-mono); }
-  .job .link-row{ margin-top:10px; font-size:0.88rem; display:flex; gap:16px; }
-
-  /* ---------- CAROUSEL (Consulting Experience) ---------- */
-  .carousel-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
-  .carousel-controls{ display:flex; align-items:center; gap:12px; }
-  .carousel-count{ font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); min-width:38px; text-align:center; }
-  .carousel-hint{ font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; }
-  .carousel-viewport{ overflow:hidden; }
-  .carousel-track{ display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); }
-  .carousel-slide{ flex:0 0 100%; min-width:0; }
-  .carousel-slide .job{ margin-bottom:0; }
-  .carousel-btn{
-    appearance:none; -webkit-appearance:none; -moz-appearance:none;
-    width:30px; height:30px; border-radius:50%; border:1px solid var(--border);
-    background:#fff; color:var(--text-secondary); cursor:pointer; flex-shrink:0; box-sizing:border-box;
-    display:flex; align-items:center; justify-content:center; font-size:0.9rem; line-height:1; padding:0;
-    transition:border-color .2s ease, color .2s ease;
-  }
-  .carousel-btn:hover{ border-color:var(--accent); color:var(--accent); }
-  .carousel-dots{ display:flex; align-items:center; gap:8px; }
-  .carousel-dot{
-    appearance:none; -webkit-appearance:none; -moz-appearance:none;
-    display:block; box-sizing:border-box;
-    width:7px; height:7px; padding:0; margin:0; border-radius:4px; border:none; background:var(--border);
-    cursor:pointer; transition:width .25s ease, background .25s ease;
-  }
-  .carousel-dot.active{ width:20px; background:var(--accent); }
-  @media (max-width: 640px){
-    .carousel-head{ align-items:flex-start; }
-  }
-
-  /* ---------- SKILLS ---------- */
-  .competencies{ color:var(--text-secondary); font-size:0.95rem; line-height:1.9; }
-  .skill-row{ display:flex; flex-direction:column; gap:4px; margin-bottom:16px; }
-  .skill-row:last-child{ margin-bottom:0; }
-  .skill-row .cat{ font-weight:600; font-size:0.92rem; color:var(--text); }
-  .skill-row .vals{ color:var(--text-secondary); font-size:0.92rem; }
-
-  /* ---------- PROJECTS ---------- */
-  .proj{ padding:22px 0; border-top:1px solid var(--border-soft); }
-  .proj:first-child{ border-top:none; padding-top:0; }
-  .proj-top{ display:flex; flex-wrap:wrap; align-items:baseline; gap:8px; justify-content:space-between; }
-  .proj h3{ font-size:1rem; }
-  .proj .kind{ font-family:var(--font-mono); font-size:0.76rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; }
-  .proj p{ color:var(--text-secondary); font-size:0.94rem; margin-top:8px; }
-  .proj .meta-line{ margin-top:8px; font-size:0.88rem; color:var(--text-secondary); }
-  .proj .link-row{ margin-top:8px; font-size:0.88rem; display:flex; gap:16px; flex-wrap:wrap; }
-
-  /* ---------- PUBLICATIONS ---------- */
-  .pub{ padding:16px 0; border-top:1px solid var(--border-soft); }
-  .pub:first-child{ border-top:none; padding-top:0; }
-  .pub-title{ font-weight:500; font-size:0.95rem; }
-  .pub-meta{ color:var(--text-secondary); font-size:0.86rem; margin-top:4px; }
-  .review-list{ margin-top:16px; display:flex; flex-direction:column; gap:8px; }
-  .review-list li{ color:var(--text-secondary); font-size:0.88rem; padding-left:16px; position:relative; }
-  .review-list li::before{ content:"-"; position:absolute; left:0; color:var(--text-muted); }
-
-  /* ---------- EDUCATION ---------- */
-  .edu{ margin-bottom:22px; }
-  .edu:last-child{ margin-bottom:0; }
-  .edu-head{ display:flex; flex-direction:column; gap:2px; }
-  .edu-head .school{ font-weight:600; font-size:1rem; }
-  .edu-head .meta{ color:var(--text-secondary); font-size:0.88rem; font-family:var(--font-mono); }
-  .edu .degree{ color:var(--text-secondary); font-size:0.92rem; margin-top:6px; }
-  .edu .course{ color:var(--text-muted); font-size:0.85rem; margin-top:8px; }
-  .edu-footnote{ font-size:0.85rem; color:var(--text-muted); margin-top:6px; }
-
-  /* ---------- RECOGNITION ---------- */
-  .rec-list{ display:flex; flex-direction:column; gap:16px; }
-  .rec-item .t{ font-weight:600; font-size:0.94rem; }
-  .rec-item .d{ color:var(--text-secondary); font-size:0.88rem; margin-top:3px; }
-
-  /* ---------- CONTACT ---------- */
-  footer{ padding:48px 0 40px; }
-  .contact-list{ display:flex; flex-direction:column; gap:10px; font-size:0.95rem; }
-  .contact-list .k{ color:var(--text-muted); font-family:var(--font-mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; margin-right:10px; display:inline-block; min-width:90px; }
-  .footer-note{ margin-top:36px; padding-top:20px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--text-muted); }
-
-  .btn{
-    display:inline-flex; align-items:center; gap:6px; font-size:0.9rem; font-weight:500;
-    padding:9px 16px; border-radius:6px; border:1px solid var(--border); color:var(--text);
-  }
-  .btn:hover{ border-color:var(--text-secondary); text-decoration:none; }
-  .btn-primary{ background:var(--text); color:#fff; border-color:var(--text); }
-  .btn-primary:hover{ background:#000; border-color:#000; }
-
-  /* ---------- RESPONSIVE (mobile-first: base = mobile) ---------- */
-  @media (min-width:640px){
-    .about-row{ flex-direction:row; gap:32px; align-items:flex-start; }
-    .about-photo{ width:200px; height:200px; margin:0; }
-    .job-head{ flex-direction:row; justify-content:space-between; align-items:baseline; }
-    .edu-head{ flex-direction:row; justify-content:space-between; align-items:baseline; }
-    .proj-top{ flex-wrap:nowrap; }
-  }
-  @media (min-width:860px){
-    nav.links{ display:flex; }
-    .menu-toggle{ display:none; }
-    .hero{ padding:76px 0 56px; }
-    .section{ padding:60px 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    .reveal{ transition:none; opacity:1; transform:none; }
-  }
+:root{--bg:#fff;--alt:#f6f7f9;--tx:#14171c;--sec:#505762;--mu:#868c96;--ln:#e2e5ea;--ac:#1d4ed8;--ab:#e9effd;--sans:'Inter',-apple-system,"Segoe UI",sans-serif;--ser:'Source Serif 4',Georgia,serif;--mo:'IBM Plex Mono',monospace}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1014;--alt:#14171d;--tx:#eceef2;--sec:#a9afb9;--mu:#7a808b;--ln:#252a32;--ac:#7ea3ff;--ab:#1a2748}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
+ul{margin:0;padding:0;list-style:none}p{margin:0 0 8px}
+.w{max-width:980px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:56px;gap:18px}
+header b{font:600 1rem var(--ser);white-space:nowrap}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+nav a{color:var(--sec);font-size:.85rem;padding:6px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover,nav a.on{color:var(--tx);background:var(--alt);text-decoration:none}
+.hero{padding:56px 0 36px;background:linear-gradient(180deg,var(--alt),var(--bg))}
+.hg{display:grid;grid-template-columns:168px 1fr;gap:36px;align-items:center}
+.ph{width:168px;height:168px;border-radius:14px;object-fit:cover;border:1px solid var(--ln);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+div.ph{display:flex;align-items:center;justify-content:center;background:var(--ab);color:var(--ac);font:500 2.4rem var(--mo)}
+h1{font:700 clamp(2.1rem,6vw,3.1rem)/1.08 var(--ser);margin:0;letter-spacing:-.01em}
+.role{font-size:1.1rem;margin-top:8px}.aff{color:var(--sec);font-size:.92rem;margin-top:4px}
+.lede{color:var(--sec);max-width:640px;margin-top:14px}.lede b{color:var(--tx);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.btn{border:1px solid var(--ln);background:var(--bg);border-radius:8px;padding:7px 14px;font-size:.86rem;color:var(--tx)}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#fff}.btn:hover{text-decoration:none;border-color:var(--ac)}
+.stats{display:flex;flex-wrap:wrap;margin-top:36px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);overflow:hidden}
+.stats div{flex:1 1 170px;padding:14px 16px;border-left:1px solid var(--ln);border-top:1px solid var(--ln);margin:-1px 0 0 -1px;font-size:.78rem;color:var(--sec);line-height:1.35}
+.stats b{display:block;font:600 1.45rem var(--ser);color:var(--tx)}
+.mode{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px;font:.76rem var(--mo);color:var(--mu)}
+.chip{font:500 .82rem var(--sans);border:1px solid var(--ln);background:var(--bg);color:var(--sec);border-radius:99px;padding:5px 14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--tx);border-color:var(--tx);color:var(--bg)}
+main{display:flex;flex-direction:column}
+section{padding:48px 0;border-bottom:1px solid var(--ln);scroll-margin-top:56px;order:var(--o)}
+#education{--o:1}#industry{--o:2}#research{--o:3}#publications{--o:4}#projects{--o:5}#leadership{--o:6}#skills{--o:7}#contact{--o:9}
+body[data-m=academic] #research{--o:2}body[data-m=academic] #publications{--o:3}body[data-m=academic] #industry{--o:4}body[data-m=academic] #leadership{--o:5}body[data-m=academic] #projects{--o:6}
+body[data-m=industry] #industry{--o:0}body[data-m=industry] #projects{--o:2}body[data-m=industry] #education{--o:3}
+h2{font:600 1.55rem var(--ser);margin:0 0 6px}.sub{color:var(--sec);font-size:.92rem;margin:0 0 24px}
+h3{font-size:1rem;margin:0;font-weight:600}
+.row{display:grid;grid-template-columns:150px 1fr;gap:4px 28px;padding:20px 0;border-top:1px solid var(--ln)}.row:first-of-type{border-top:0}
+.d{font:.78rem var(--mo);color:var(--mu);padding-top:4px}
+.org{color:var(--sec);font-size:.9rem}
+.row p,.row li{color:var(--sec);font-size:.92rem}.row li{padding-left:16px;position:relative;margin-top:5px}.row li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--ac)}
+.sm{margin-top:14px;padding-left:14px;border-left:2px solid var(--ln)}.sm h3{font-size:.95rem}
+.res{display:inline-block;margin-top:6px;font:.76rem var(--mo);background:var(--ab);color:var(--ac);border-radius:4px;padding:2px 8px}
+.tg{font:.74rem var(--mo);color:var(--mu);margin-top:8px}
+.pl{counter-reset:p}.pl li{counter-increment:p;display:grid;grid-template-columns:34px 1fr;padding:13px 0;border-top:1px solid var(--ln);font-size:.92rem}
+.pl li::before{content:"[" counter(p) "]";font:.8rem var(--mo);color:var(--mu);padding-top:2px}
+.pl .t{font-weight:500}.pl small{display:block;color:var(--sec);font-size:.84rem;margin-top:2px}
+.pl.rv li::before{content:"R" counter(p)}
+h4{font:500 .76rem var(--mo);text-transform:uppercase;letter-spacing:.07em;color:var(--mu);margin:28px 0 4px}
+.aw{background:var(--ab);color:var(--ac);font:.68rem var(--mo);border-radius:4px;padding:1px 6px;margin-left:4px}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px}.pc{display:flex;flex-direction:column;border:1px solid var(--ln);border-radius:12px;padding:22px;background:var(--bg);transition:border-color .2s,box-shadow .2s}.pc:hover{border-color:var(--ac);box-shadow:0 6px 20px rgba(0,0,0,.06)}.pc .k{font:500 .72rem var(--mo);color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}.pc h3{font-size:1.05rem;line-height:1.35}.pc p{color:var(--sec);font-size:.9rem;margin:8px 0 14px}.pc .m{margin:0 0 16px;padding-left:12px;border-left:2px solid var(--ac);font-size:.85rem}.pf{margin-top:auto;padding-top:14px;border-top:1px solid var(--ln);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px}.pf span{font:.74rem var(--mo);color:var(--mu)}.pf .lk{margin:0}.hn>div{display:grid;grid-template-columns:150px 1fr;gap:2px 28px;padding:14px 0;border-top:1px solid var(--ln)}.hn>div:first-child{border-top:0;padding-top:0}.hn p{margin:2px 0 0;font-size:.9rem;color:var(--sec)}
+.lk{display:flex;gap:12px;font-size:.84rem;margin-top:8px}
+.sk{display:grid;grid-template-columns:190px 1fr;gap:8px 24px;font-size:.9rem;margin:0}.sk dt{font-weight:600}.sk dd{margin:0;color:var(--sec)}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px 24px;font-size:.92rem}
+.ct span{display:block;font:.72rem var(--mo);color:var(--mu);text-transform:uppercase}
+footer{padding:22px 0;font-size:.8rem;color:var(--mu)}
+.row .lead{color:var(--tx);font-size:.95rem;margin:10px 0 0}.ws{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;margin:16px 0 0}.ws>div{padding:14px 0;border-top:1px solid var(--ln)}.ws dt{font-weight:600;font-size:.92rem;color:var(--tx)}.ws dt span{display:block;font:500 .72rem var(--mo);color:var(--ac);margin-top:2px}.ws dd{margin:6px 0 0;color:var(--sec);font-size:.88rem}
+@media(max-width:720px){.ws,.hn>div{grid-template-columns:1fr}.hg{grid-template-columns:1fr;gap:20px}.row,.sk{grid-template-columns:1fr}.row{gap:2px}}
+@media print{header,.mode,.cta{display:none}section{break-inside:avoid;padding:20px 0}.pc{background:none}}
 </style>
 </head>
-<body>
+<body id="top" data-m="overview">
+<header><div class="w"><b>Arjun Sasikumar</b><nav id="nv"><a href="#education">Education</a><a href="#industry">Industry</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#leadership">Leadership</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></div></header>
 
-<header>
-  <div class="nav-inner">
-    <a href="#top" class="nav-name">Arjun Sasikumar</a>
-    <nav class="links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Publications</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+<div class="hero"><div class="w">
+<div class="hg">
+<img class="ph" src="https://media.licdn.com/dms/image/v2/D5603AQH6Vcvi65QaPQ/profile-displayphoto-scale_400_400/B56ZxqGFZbKsAs-/0/1771306510966?e=1792022400&v=beta&t=dFzw5SSgNML5pNyND2-wIhE2MHo0Q8HGu4QOB6rXJ7g" alt="Profile Image" alt="Arjun Sasikumar" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'AS'}))">
+<div>
+<h1>Arjun Sasikumar</h1>
+<div class="role">Applied AI researcher and engineer</div>
+<div class="aff">B.Tech, Electrical and Electronics Engineering, NIT Nagaland · BS, Data Science and Applications, IIT Madras · Bengaluru, India</div>
+<p class="lede">I build machine learning systems for signals and industrial processes, <b>publish the research behind them</b>, and <b>ship production software</b> for clients. Work spans edge anomaly detection, uncertainty-aware fault diagnosis, process optimization at Yokogawa, and full-stack platforms in the UAE. My research interest is adaptive intelligence in cyber-physical systems. Give me a hard problem and I will work it out end to end.</p>
+<div class="cta"><a class="btn p" href="mailto:arjun3314508@gmail.com">Email</a><a class="btn" href="https://github.com/83Gh0st" target="_blank" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/arjun-s-a884b8258/" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://orcid.org/0009-0008-7897-6800" target="_blank" rel="noopener">ORCID</a></div>
+</div></div>
+<div class="stats"><div><b>9.24</b>B.Tech CGPA, First Class with Distinction</div><div><b>6</b>papers, IEEE and Springer</div><div><b>Best Paper</b>IEEE CCPIS 2025</div><div><b>Yokogawa</b>Industrial AI, Abu Dhabi</div><div><b>3</b>client platforms in production</div></div>
+<div class="mode" role="group" aria-label="Emphasis">Emphasis<button class="chip" data-m="overview" aria-pressed="true">Overview</button><button class="chip" data-m="academic" aria-pressed="false">Academic</button><button class="chip" data-m="industry" aria-pressed="false">Industry</button></div>
+</div></div>
 
-<main id="top">
+<main>
+<section id="education"><div class="w"><h2>Education</h2><p class="sub">Two concurrent degrees: Electrical engineering and Data Science.</p>
+<div class="row"><div class="d">2022 – 2026</div><div><h3>B.Tech, Electrical and Electronics Engineering</h3><div class="org">National Institute of Technology (NIT) Nagaland · CGPA 9.24/10 · First Class with Distinction</div><p style="margin-top:8px">Linear Algebra, Multivariate Calculus, Probability and Random Processes, Data Structures and Algorithms, Signals and Systems, Linear Control Systems, Power Electronics, Embedded Systems, Robotics.</p></div></div>
+<div class="row"><div class="d">2022 – 2028</div><div><h3>BS, Data Science and Applications (online)</h3><div class="org">Indian Institute of Technology (IIT) Madras · Ongoing</div><p style="margin-top:8px">Machine Learning, Deep Learning, Data Structures and Algorithms, Data Analysis, Programming, Tools in Data Science.</p></div></div>
+<div class="row"><div class="d">Higher secondary</div><div><h3>98.8%</h3><div class="org">Calicut, Kerala</div></div></div>
+</div></section>
 
-  <section class="hero">
-    <div class="wrap">
-      <h1>Arjun Sasikumar</h1>
-      <p class="role">Electrical &amp; Electronics Engineer &middot; Applied AI/ML Builder</p>
-      <p class="desc">I build Applied AI systems, and ship production software for clients. Completed a degree across NIT Nagaland (B.Tech, EEE) and currently completing IIT Madras (BS, Data Science &amp; Applications). Open to Forward Deployed Engineering, Solutions Engineering, and Applied AI/ML roles.</p>
-      <div class="hero-links">
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/83Gh0st" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/arjun-s-a884b8258/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </section>
+<section id="industry"><div class="w"><h2>Industry Experience</h2><p class="sub">Most recent first.</p>
+<div class="row"><div class="d">2026 – Present</div><div><h3>Independent Software Engineering Consultant</h3><div class="org">Sole engineer, from requirements to production deployment</div>
+<div class="sm"><h3>HireLocal, Nagaland Skill and Entrepreneurship Development Mission (NSEDM) <span class="aw">In development</span></h3><p>Contracted to build a digital employment platform that connects certified candidates with approved local entities and verifies actual engagement outcomes for programme monitoring. Scope: candidate data integration with the existing MIS (CSV import or API), employment and gig workflows, outcome verification with anomaly flags, role-based access control, and production readiness covering hosting, security audit and data governance.</p></div>
+<div class="sm"><h3><a href="https://www.noviqa.ae/" target="_blank" rel="noopener">Noviqa Management Services, Dubai</a> <span class="org">· Jul 2026</span></h3><p>Built and maintain the production web platform for a commercial receivables company (Next.js, TypeScript, Tailwind, Vercel). Server-side validation, sanitization, honeypot and rate limiting, CSP and HSTS headers, domain, SSL, DNS and authenticated email.</p><div class="lk"><a href="https://www.noviqa.ae/" target="_blank" rel="noopener">Live site</a><a href="https://github.com/83Gh0st/noviqa-website" target="_blank" rel="noopener">Code</a></div></div>
+<div class="sm"><h3><a href="https://www.blueoceanchemical.com/" target="_blank" rel="noopener">BlueOcean</a> <span class="org">· 2026</span></h3><p>Business management platform integrating accounting and internal operations, plus the company website. Requirements, system design and delivery with stakeholders.</p><div class="lk"><a href="https://www.blueoceanchemical.com/" target="_blank" rel="noopener">Live site</a><a href="https://github.com/83Gh0st/Blueocean-erp" target="_blank" rel="noopener">Platform code</a><a href="https://github.com/83Gh0st/BlueOcean-" target="_blank" rel="noopener">Website code</a></div></div>
+<div class="sm"><h3><a href="https://www.rvgroupcontracting.com/" target="_blank" rel="noopener">RV Group Contracting, UAE</a> <span class="org">· 2026</span></h3><p>Production site for a Civil, MEP and HVAC contractor across four emirates: services, per-emirate licensing, end-to-end quote-request flow, SEO metadata and image delivery.</p><div class="lk"><a href="https://www.rvgroupcontracting.com/" target="_blank" rel="noopener">Live site</a></div></div>
+</div></div>
+<div class="row"><div class="d">Dec 2025 – Feb 2026</div><div><h3>Advanced Solutions Engineering Intern</h3><div class="org"><b style="color:var(--tx)">Yokogawa</b>, Advanced Solutions and Optimization Department · Abu Dhabi, UAE</div><p class="lead">Worked with industrial time-series data, process variables, statistical modelling, machine learning, and engineering constraints in real-world process systems.</p><dl class="ws"><div><dt>Ethane cracking optimization<span>Borouge AI Optimizer</span></dt><dd>Conversion-prediction models and severity-aware multivariate optimization for safe steam-to-hydrocarbon (S/H) ratio selection.</dd></div><div><dt>Refinery soft sensors<span>ENOC</span></dt><dd>Inferential flash-point models for naphtha, kerosene and gas oil from live process data, using Linear Regression, PCR and PLS with residual diagnostics.</dd></div><div><dt>Retrieval over furnace data<span>Process RAG</span></dt><dd>Vector retrieval of similar high-conversion operating clusters, recommending setpoints grounded in the plant’s historically safe envelope.</dd></div><div><dt>Well-test automation<span>Oil and gas</span></dt><dd>Python engine for accept/reject analysis with rule-based logic, data-quality checks, time-series visualization and automated reporting, reducing manual review.</dd></div></dl><div class="tg">Python · SciPy · Scikit-learn · PCR/PLS · FAISS · Pandas · Plotly</div></div></div>
+</div></section>
 
-  <section class="section" id="about">
-    <div class="wrap">
-      <div class="section-title">About</div>
-      <div class="about-row reveal">
-        <div class="about-photo">
-<img src="https://media.licdn.com/dms/image/v2/D5603AQH6Vcvi65QaPQ/profile-displayphoto-scale_400_400/B56ZxqGFZbKsAs-/0/1771306510966?e=1792022400&v=beta&t=dFzw5SSgNML5pNyND2-wIhE2MHo0Q8HGu4QOB6rXJ7g" alt="Profile Image" />        </div>
-        <div class="about-text">
-          <p>I'm an <strong>Electrical &amp; Electronics Engineering</strong> graduate from NIT Nagaland (CGPA 9.24/10), concurrently completing a <strong>BS in Data Science &amp; Applications at IIT Madras</strong>. My work sits at the intersection of applied AI/ML and real electrical, mechanical, and industrial systems.</p>
-          <p>I've built anomaly-detection models for ECG signals and motor bearings, and shipped industrial process-optimization tools as an Advanced Solutions Engineering intern at Yokogawa in Abu Dhabi. I have published my works in IEEE and Springer venues, and I build and ship production software as an independent consultant.</p>
-          <div class="stat-line">
-            <span><strong>9.24</strong> B.Tech CGPA</span><span class="sep">&middot;</span>
-            <span><strong>6</strong> published papers</span><span class="sep">&middot;</span>
-            <span><strong>4</strong> manuscripts in review</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="section" id="experience">
-  <div class="wrap">
-    <div class="section-title">Professional Experience</div>
+<section id="research"><div class="w"><h2>Research Experience</h2><p class="sub">Undergraduate Researcher, NIT Nagaland, in collaboration with Dr. D. Ganga · 2025 – Present</p>
+<div class="row"><div class="d">Paper [1]</div><div><h3>Edge-efficient autoencoders for unsupervised ECG arrhythmia detection <span class="aw">Best Paper</span></h3><p>Flat VAE and LSTM-VAE trained only on normal cardiac signals, with reconstruction-error thresholding that needs no labelled pathology. A 107 KB model and a High-Channel Shallow Conv1D Autoencoder with global feature summarization.</p><span class="res">99% accuracy · 0.97 macro-F1 · 0.995 AUC · 5.35 ms on CPU</span></div></div>
+<div class="row"><div class="d">Papers [4] [5] [6]</div><div><h3>Machine learning for bearing fault diagnosis from vibration signals</h3><p>Classical ML, BN-augmented Bi-GRU and VAE anomaly detection under varying load and speed. Current work on class-conditional latent-space scoring for selective classification, and an edge-compatible anomaly scoring layer that flags unreliable 1D-CNN predictions under distribution shift.</p><span class="res">3 papers published · 2 manuscripts in review</span></div></div>
+<div class="row"><div class="d">Paper [3]</div><div><h3>Real-time computer vision for industrial safety compliance</h3><p>Customized YOLOv5s for PPE compliance on construction sites, with CLAHE and an occlusion-aware variant. Quantized and exported to ONNX; also benchmarked on TensorFlow Lite and TensorFlow.js.</p><span class="res">0.980 mAP@0.5 · 0.95 F1 · ~38.7 FPS, CPU only</span><div class="lk"><a href="https://github.com/83Gh0st/Eagle-eyes" target="_blank" rel="noopener">Code</a></div></div></div>
+<h4>Research interests</h4>
+<div class="row"><div class="d">Focus</div><div><h3>Adaptive intelligence in cyber-physical systems</h3><p>How intelligent systems recognize that their environment has changed, adapt reliably within uncertainty, compute and safety constraints, and stay trustworthy when deployed in the physical world. This builds on my work in anomaly detection, representation learning and uncertainty-aware diagnosis.</p><div class="tg">Adaptive learning · Uncertainty · Safe adaptation · Edge AI · Cyber-physical systems</div></div></div>
+</div></section>
 
-    <div class="job reveal">
-      <div class="job-head">
-        <span class="company">Yokogawa, Advanced Solutions &amp; Optimization Dept., Abu Dhabi, UAE</span>
-        <span class="meta">Dec 2025 &ndash; Feb 2026</span>
-      </div>
-      <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Advanced Solutions Engineering Intern</div>
-      <ul>
-        <li>Designed and developed Python-based automation for oil &amp; gas well-test accept/reject analysis, integrating rule-based logic, data-quality checks, time-series visualization, and automated reporting to reduce manual engineering review and improve decision consistency.</li>
-        <li>Contributed to AI-driven ethane steam-cracking optimization under the Borouge AI Optimizer initiative, building conversion-prediction models and severity-aware multivariate optimization frameworks for safe Steam-to-Hydrocarbon (S/H) ratio selection.</li>
-        <li>Developed and evaluated inferential soft-sensor models for refinery distillation (naphtha, kerosene, gas oil) on the ENOC project, applying Linear Regression, PCR, and PLS with residual diagnostics to estimate flash point from live process data.</li>
-        <li>Applied vector retrieval and RAG to represent multidimensional furnace operating data, retrieving similar historical operating clusters with high conversion and recommending conversion-improving setpoints grounded within the plant's historically safe operating envelope.</li>
-      </ul>
-      <div class="tags">Python &middot; Process Automation &middot; Time-Series Analysis &middot; PCR / PLS &middot; Vector Retrieval / RAG &middot; Industrial AI</div>
-    </div>
-  </div>
+<section id="publications"><div class="w"><h2>Publications</h2><p class="sub">Six conference papers, three as first author. * corresponding author.</p>
+<ul class="pl">
+<li><div><span class="t">Lightweight and Efficient Variational Auto Encoder for Arrhythmia Detection <span class="aw">Best Paper Award</span></span><small><b>A. Sasikumar</b>, D. Ganga* · Int. Conf. on Circuits, Power and Intelligent Systems (CCPIS), Bhubaneswar, Sept 2025 · IEEE · <a href="https://doi.org/10.1109/ccpis65231.2025.11233885" target="_blank" rel="noopener">DOI</a></small></div></li>
+<li><div><span class="t">Multi Modal Edge Data Processing for Real Time Landslide Early Warning System</span><small>D. Ganga, N. Ngullie, R. Kumar, <b>A. Sasikumar</b> · Int. Conf. on Recent Advances in Computing and Systems (REACS), Gwalior, Dec 2025 · IEEE · <a href="https://doi.org/10.1109/reacs67479.2025.11413382" target="_blank" rel="noopener">DOI</a></small></div></li>
+<li><div><span class="t">Real-Time Detection of Personal Protective Equipment in Construction Sites Using YOLOv5: A Computer Vision-Based Safety Compliance Framework</span><small><b>A. Sasikumar</b>, D. Ganga*, N. Ngullie · Int. Conf. on Pattern Recognition and Machine Intelligence (PReMI), IIT Delhi, Dec 2025 · Springer LNCS, 2026 · <a href="https://doi.org/10.1007/978-3-032-18480-1_7" target="_blank" rel="noopener">DOI</a></small></div></li>
+<li><div><span class="t">Intelligent Fault Classification of Rolling Bearings via Stacked BN-Augmented Bi-GRU</span><small>D. Ganga*, <b>A. Sasikumar</b>, S. Kumar · Int. Conf. on Advances in Information Engineering and Systems (ICAIES), Dec 2025 · Springer LNCS</small></div></li>
+<li><div><span class="t">Lightweight Classical Machine Learning for Edge-Ready Bearing Fault Diagnosis: A Comparative Analysis of Random Forest and SVM on Statistical Features</span><small><b>A. Sasikumar</b>, D. Ganga* · Int. Conf. on Vibration Engineering and Technology of Machinery (VETOMAC), IIT Guwahati, Dec 2025 · Springer LNME</small></div></li>
+<li><div><span class="t">Variational Autoencoder-Based Anomaly Detection in Vibration Signals for Early Bearing Fault Diagnostics</span><small>D. Ganga*, <b>A. Sasikumar</b>, S. K. Mandal · VETOMAC, IIT Guwahati, Dec 2025 · Springer LNME</small></div></li>
+</ul>
+<h4>Manuscripts in review</h4>
+<ul class="pl rv">
+<li><div><span class="t">A One-Shot, Lightweight, High-Channel Shallow Edge-Ready Conv1D Autoencoder with Global Feature Summarization for Early and Efficient Diagnosis of Cardiovascular Disorders</span></div></li>
+<li><div><span class="t">Edge Compatible Anomaly Scoring of 1D CNNs with Confidence Quantification for Explainable Fault Classification under Uncertain Conditions</span></div></li>
+<li><div><span class="t">Trust-Gated Selective Classification for Bearing Fault Diagnosis via Class-Conditional Latent-Space Scoring</span></div></li>
+<li><div><span class="t">Edge-Optimized Multi-Class Threat Detection Using YOLO: An Occlusion-Aware, CLAHE-Enhanced Framework for Real-Time Intelligent Surveillance</span></div></li>
+</ul>
+</div></section>
 
-  <div class="wrap" style="margin-top:44px; padding-top:36px; border-top:1px solid var(--border);">
-    <div class="carousel-head">
-      <div class="section-title" style="margin-bottom:0;">Consulting Experience</div>
-      <div class="carousel-controls">
-        <span class="carousel-count" id="consultingCount">1 / 3</span>
-        <div class="carousel-dots" id="consultingDots" role="tablist" aria-label="Consulting projects"></div>
-        <button class="carousel-btn" id="consultingPrev" type="button" aria-label="Previous consulting project">&#8592;</button>
-        <button class="carousel-btn" id="consultingNext" type="button" aria-label="Next consulting project">&#8594;</button>
-      </div>
-    </div>
-    <div class="carousel-hint">3 consulting engagements. Use the arrows or dots to browse.</div>
-
-    <div class="carousel reveal" id="consultingCarousel">
-      <div class="carousel-viewport">
-        <div class="carousel-track" id="consultingTrack">
-
-          <!-- BlueOcean -->
-          <div class="carousel-slide">
-            <div class="job">
-              <div class="job-head">
-                <span class="company">BlueOcean</span>
-                <span class="meta">2026</span>
-              </div>
-              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Software Engineering Consultant</div>
-              <ul>
-                <li>Building a business management platform alongside the company's website, integrating accounting and internal operational workflows.</li>
-                <li>Working directly with stakeholders to understand requirements, design the system, and take it toward production.</li>
-              </ul>
-              <div class="tags">Next.js &middot; TypeScript &middot; System Design &middot; Stakeholder Management</div>
-              <div class="link-row">
-                <a href="https://github.com/83Gh0st/Blueocean-erp" target="_blank" rel="noopener">View platform code</a>
-                <a href="https://github.com/83Gh0st/BlueOcean-" target="_blank" rel="noopener">View website code</a>
-                <a href="https://www.blueoceanchemical.com/" target="_blank" rel="noopener">View live site</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Noviqa -->
-          <div class="carousel-slide">
-            <div class="job">
-              <div class="job-head">
-                <span class="company">Noviqa Management Services LLC, Dubai, UAE</span>
-                <span class="meta">July 2026</span>
-              </div>
-              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Independent Software Engineer (Consulting)</div>
-              <ul>
-                <li>Engaged directly by a Dubai-based commercial receivables company to build and maintain their production web platform from the ground up, using Next.js, React, TypeScript, and Tailwind CSS, deployed on Vercel.</li>
-                <li>Engineered secure backend workflows including server-side validation, input sanitization, honeypot spam protection, and rate limiting, and hardened the app with CSP, HSTS, and X-Frame-Options headers.</li>
-                <li>Owned deployment end to end as the sole engineer, covering custom domain configuration, HTTPS/SSL, DNS, and authenticated email records, plus ongoing UI iteration and bug fixes as an independent consultant.</li>
-              </ul>
-              <div class="tags">Next.js &middot; TypeScript &middot; Tailwind CSS &middot; Vercel &middot; Security</div>
-              <div class="link-row">
-                <a href="https://github.com/83Gh0st/noviqa-website" target="_blank" rel="noopener">View code</a>
-                <a href="https://www.noviqa.ae/" target="_blank" rel="noopener">View live site</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- RV Group Contracting -->
-          <div class="carousel-slide">
-            <div class="job">
-              <div class="job-head">
-                <span class="company">RV Group Contracting, Dubai &amp; Sharjah, UAE</span>
-                <span class="meta">2026</span>
-              </div>
-              <div class="meta" style="color:var(--text-secondary); font-size:0.9rem; margin-top:2px;">Independent Software Engineer (Consulting)</div>
-              <ul>
-                <li>Built and deployed the production marketing site for a multidisciplinary Civil, MEP &amp; HVAC contractor operating across Dubai, Sharjah, Ajman, and Abu Dhabi, using Next.js, React, TypeScript, and Tailwind CSS.</li>
-                <li>Structured the site around services, project process, per-emirate licensing and coverage, client roster, and FAQ sections, with an end-to-end enquiry/quote-request flow and SEO-optimized metadata and image delivery.</li>
-              </ul>
-              <div class="tags">Next.js &middot; TypeScript &middot; Tailwind CSS &middot; SEO</div>
-              <div class="link-row">
-                <span class="muted">Private client repository</span>
-                <a href="https://www.rvgroupcontracting.com/" target="_blank" rel="noopener">View live site</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <section class="section" id="skills">
-    <div class="wrap">
-      <div class="section-title">Core Competencies</div>
-      <p class="competencies reveal">Problem Solving &amp; Analytical Thinking &middot; Systems Design &amp; Solution Architecture &middot; End-to-End Development &middot; Applied AI Solution Development &middot; Technical Communication &middot; Customer &amp; Stakeholder Requirement Analysis &middot; Cross-Functional Collaboration</p>
-    </div>
-    <div class="wrap" style="margin-top:36px;">
-      <div class="section-title">Technical Skills</div>
-      <div class="reveal">
-        <div class="skill-row">
-          <div class="cat">Programming</div>
-          <div class="vals">Python, C, Java, JavaScript/TypeScript, SQL, Kotlin, MATLAB, Bash</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">AI/ML</div>
-          <div class="vals">TensorFlow, PyTorch, Scikit-learn, Keras, OpenCV, Neural Networks, CNNs, RNNs, LSTMs, BiLSTMs, Autoencoders/VAEs, Transformers, Computer Vision, Object Detection (YOLO), Representation Learning, Anomaly Detection, Edge AI/TinyML, LLMs, RAG, AI Agents, LangChain, Hugging Face</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">AI Systems &amp; MLOps</div>
-          <div class="vals">LangGraph, Vector Databases, Model Evaluation, Model Serving, Model Optimization, API Integration, AI Pipelines</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">Mobile &amp; App Development</div>
-          <div class="vals">Kotlin, Jetpack Compose, Android SDK, Room, Supabase</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">Industrial &amp; Process Engineering (EEE-Applied)</div>
-          <div class="vals">Industrial Data Analytics, Time-Series Analysis, Statistical &amp; Multivariate Modeling (Linear Regression, PCR, PLS), Process Optimization, Soft Sensors, Automation, Control Systems, Signal Processing, Power Electronics</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">Embedded Systems</div>
-          <div class="vals">Arduino, Raspberry Pi, ESP32, ARM Cortex, NVIDIA Jetson Nano, PID Control, Robotics Kinematics</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">Web &amp; Application Development</div>
-          <div class="vals">Next.js, React.js, Node.js, FastAPI, MongoDB, Prisma, Tailwind CSS, Stripe API</div>
-        </div>
-        <div class="skill-row">
-          <div class="cat">Cloud &amp; Tools</div>
-          <div class="vals">AWS, Docker, Git/GitHub, MATLAB/Simulink</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="projects">
-    <div class="wrap-wide">
-      <div class="section-title">Software Engineering &amp; Applied AI Projects</div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Trace: AI Finance Controller</h3><span class="kind">FastAPI &middot; Apache AGE &middot; Docker</span></div>
-        <p>A full-stack reconciliation platform combining a deterministic reconciliation engine, an AI-driven investigator, a real Apache AGE graph database for evidence traversal, and a rule-based policy engine that is the only component allowed to auto-close a case. An independent Verifier gate cross-checks the evidence chain before any auto-close is authorized, and every escalated case supports a real human approve/reject decision, persisted end to end. Built as a 7-view control room UI (vanilla JS, no build step) over a FastAPI/Postgres backend, orchestrated with Docker Compose and traced end-to-end with Phoenix/OpenTelemetry.</p>
-        <div class="meta-line">92.8% match rate and 94.4% resolution accuracy on a ground-truth-graded benchmark; adding the Verifier gate cut false auto-closes from 33.3% to 0%</div>
-        <div class="link-row"><a href="https://github.com/83Gh0st/Trace-V1" target="_blank" rel="noopener">View code</a></div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Recoupa: Multi-Tenant Debt Recovery &amp; Sales CRM</h3><span class="kind">Next.js &middot; PostgreSQL &middot; Drizzle</span></div>
-        <p>A multi-tenant workspace for debt-collection agencies spanning the full recovery lifecycle: principal clients, debtors, and invoices; a prioritized calling queue with outcome tracking and auto-scheduled follow-ups; cheque/PDC tracking; ageing-based commission calculation on payments; disputes and payment corrections, plus a parallel sales pipeline from prospect through conversion, spreadsheet import for onboarding existing books, role-based access control, and a full audit trail.</p>
-        <div class="meta-line">Next.js 16 App Router + Drizzle ORM on serverless Postgres (Neon); every mutation is re-checked server-side against a role/permission matrix, not just hidden in the UI</div>
-        <div class="link-row"><a href="https://github.com/83Gh0st/recoupa" target="_blank" rel="noopener">View code</a>
-                        <a href="https://recoupa-eosin.vercel.app/" target="_blank" rel="noopener">View live site</a>
+<section id="projects"><div class="w"><h2>Selected Projects</h2><p class="sub">Systems built end to end, from data model to deployment.</p>
+<div class="pg">
+<article class="pc"><div class="k">Full-stack AI · Finance operations</div><h3>Trace: AI Finance Controller</h3><p>Reconciliation platform with an AI investigator, an Apache AGE evidence graph, and a policy engine as the only component allowed to auto-close a case. An independent Verifier checks the evidence chain, and humans approve or reject escalations.</p><div class="m">94.4% resolution accuracy · false auto-closes cut from 33.3% to 0%</div><div class="pf"><span>FastAPI · Postgres · Apache AGE · Docker</span><div class="lk"><a href="https://github.com/83Gh0st/Trace-V1" target="_blank" rel="noopener">Code</a></div></div></article>
+<article class="pc"><div class="k">Multi-tenant SaaS · Collections</div><h3><a href="https://recoupa-eosin.vercel.app/" target="_blank" rel="noopener">Recoupa: debt recovery and sales CRM</a></h3><p>Workspace for debt-collection agencies: calling queue, cheque tracking, ageing-based commissions, disputes, spreadsheet import and an audit trail. Every mutation is re-checked server-side against a permission matrix.</p><div class="pf"><span>Next.js · Drizzle · Neon Postgres · RBAC</span><div class="lk"><a href="https://recoupa-eosin.vercel.app/" target="_blank" rel="noopener">Live</a><a href="https://github.com/83Gh0st/recoupa" target="_blank" rel="noopener">Code</a></div></div></article>
+<article class="pc"><div class="k">Applied AI · Retrieval-augmented generation</div><h3>Synapse: RAG health assistant</h3><p>FAISS retrieval grounding Llama-2-7B in WHO, OpenMed and medical-encyclopedia sources, with symptom-based doctor recommendations and reminders.</p><div class="m">Accuracy 65% to 91% · retrieval latency ~500 ms to under 200 ms</div><div class="pf"><span>LangChain · FastAPI · FAISS</span><div class="lk"><a href="https://github.com/83Gh0st/Synapse" target="_blank" rel="noopener">Code</a></div></div></article>
+<article class="pc"><div class="k">Mobile · Offline-first</div><h3>Vendora: billing and inventory for local shops</h3><p>Android app with barcode scanning, employee accounts, cloud backup and sync, built end to end and designed to keep working without a connection.</p><div class="pf"><span>Kotlin · Jetpack Compose · Room · Supabase</span><div class="lk"><a href="https://github.com/83Gh0st/Vendora" target="_blank" rel="noopener">Code</a></div></div></article>
+<article class="pc"><div class="k">SaaS · Generative AI</div><h3>Vimra: AI course generation</h3><p>Course generation platform for educators and content creators, with OpenAI-assisted content, Stripe payments and course management.</p><div class="pf"><span>Next.js · MongoDB · Prisma · OpenAI · Stripe</span><div class="lk"><a href="https://github.com/83Gh0st/Vimra" target="_blank" rel="noopener">Code</a></div></div></article>
+<article class="pc"><div class="k">Web app · Generative AI</div><h3>Quizo: AI quiz platform</h3><p>Responsive quiz application with dynamically generated AI quizzes, scoring and persistent user progress.</p><div class="pf"><span>Next.js · MongoDB · OpenAI</span><div class="lk"><a href="https://github.com/83Gh0st/quizo" target="_blank" rel="noopener">Code</a></div></div></article>
 </div>
-      </div>
+<p style="margin-top:18px;font-size:.88rem;color:var(--sec)">More repositories at <a href="https://github.com/83Gh0st" target="_blank" rel="noopener">github.com/83Gh0st</a>.</p>
+</div></section>
 
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Vendora: Offline-First Billing &amp; Inventory Management Platform</h3><span class="kind">Kotlin &middot; Jetpack Compose &middot; Android</span></div>
-        <p>Built an Android app for local shops to manage products, inventory and billing, with barcode scanning and employee accounts, designed to work even without an internet connection. Developed the system end to end, including the app, local database, authentication, cloud backup and synchronization.</p>
-        <div class="meta-line">Tech: Kotlin, Jetpack Compose, Room, Supabase</div>
-        <div class="link-row"><a href="https://github.com/83Gh0st/Vendora" target="_blank" rel="noopener">View code</a></div>
-      </div>
+<section id="leadership"><div class="w"><h2>Leadership and Recognition</h2><p class="sub">Awards and service alongside the research and engineering work.</p>
+<h4 style="margin-top:0">Honors and awards</h4>
+<div class="hn">
+<div><div class="d">Aug 2026</div><div><h3>First Class with Distinction</h3><p>B.Tech, Electrical and Electronics Engineering, NIT Nagaland. CGPA 9.24/10.</p></div></div>
+<div><div class="d">Nov 2025</div><div><h3>First Prize, Hackathon</h3><p>National Institute of Technology Nagaland.</p></div></div>
+<div><div class="d">Sept 2025</div><div><h3>Best Paper Award</h3><p>IEEE 2nd International Conference on Circuits, Power and Intelligent Systems (CCPIS).</p></div></div>
+<div><div class="d">2025</div><div><h3>Certificate of Recognition</h3><p>Ministry of Education, Government of India, for contributions to the National Innovation and Entrepreneurship Education Bootcamp.</p></div></div>
+</div>
+<h4>Leadership</h4>
+<div class="row"><div class="d">NIT Nagaland</div><div><h3>Secretary, Entrepreneurship and Incubation Cell (IIC)</h3><ul><li>Led planning, budgeting and logistics for national-level innovation and entrepreneurship events.</li><li>Directed multi-tiered student committees and coordinated stakeholders to deliver programs of national importance.</li><li>Managed operations for the Ministry of Education’s Innovation, Design and Entrepreneurship Bootcamp, training government school principals and teachers across India.</li></ul></div></div>
+<div class="row"><div class="d">NIT Nagaland</div><div><h3>Committee Member, IEEE Student Branch</h3><ul><li>Authored event reports and technical content, and managed communications across web and social platforms.</li></ul></div></div>
+</div></section>
 
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Synapse: RAG-Based AI Health Chatbot</h3><span class="kind">Python &middot; FastAPI &middot; LangChain</span></div>
-        <p>Retrieval-Augmented Generation over a FAISS vector store, grounding an LLM (Llama-2-7B) in trusted medical sources such as the Gale Encyclopedia of Medicine, WHO, and OpenMed. Added symptom-based doctor recommendations and medication/appointment reminders. Response accuracy climbed from a 65% baseline to 91%, and retrieval latency dropped from ~500ms to under 200ms, 2.5x faster than the non-RAG baseline.</p>
-        <div class="link-row"><a href="https://github.com/83Gh0st/Synapse" target="_blank" rel="noopener">View code</a></div>
-      </div>
+<section id="skills"><div class="w"><h2>Skills</h2><p class="sub">&nbsp;</p>
+<dl class="sk">
+<dt>Languages</dt><dd>Python, TypeScript/JavaScript, SQL, C, Java, Kotlin, MATLAB, Bash</dd>
+<dt>Machine learning</dt><dd>PyTorch, TensorFlow, Scikit-learn, OpenCV, autoencoders and VAEs, CNNs, RNNs, Transformers, anomaly detection, uncertainty estimation, representation learning, edge AI</dd>
+<dt>LLM systems</dt><dd>RAG, AI agents, LangChain, LangGraph, vector databases, Hugging Face, model evaluation and serving</dd>
+<dt>Industrial and process</dt><dd>Soft sensors, PCR/PLS, process optimization, time series, signal processing, control systems, PID, EnergyPlus</dd>
+<dt>Software</dt><dd>Next.js, React, Node.js, FastAPI, Postgres, MongoDB, Prisma, Drizzle, Tailwind, Stripe, Jetpack Compose</dd>
+<dt>Cloud and embedded</dt><dd>AWS, Docker, Vercel, Git, OpenTelemetry, Raspberry Pi, ESP32, Jetson Nano</dd>
+</dl></div></section>
 
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Vimra: AI-Assisted Course Generation Platform</h3><span class="kind">Next.js &middot; MongoDB &middot; OpenAI</span></div>
-        <p>A SaaS platform for educators and content creators to generate, manage, and monetize course content, integrating the OpenAI API for content generation and Stripe for payments.</p>
-        <div class="link-row"><a href="https://github.com/83Gh0st/Vimra" target="_blank" rel="noopener">View code</a></div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Quizo: Customizable AI-Powered Quiz Platform</h3><span class="kind">Next.js &middot; MongoDB &middot; OpenAI</span></div>
-        <p>A responsive quiz application supporting dynamic, AI-generated quizzes, scoring, and persistent user progress.</p>
-        <div class="link-row"><a href="https://github.com/83Gh0st/quizo" target="_blank" rel="noopener">View code</a></div>
-      </div>
-    </div>
-
-    <div class="wrap-wide" style="margin-top:36px;">
-      <div class="section-title">Research &amp; Applied AI: Published Papers</div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Edge-Efficient Autoencoder Framework for ECG Arrhythmia Detection</h3><span class="kind">Biomedical &middot; ECG</span></div>
-        <p>A lightweight unsupervised anomaly-detection framework for real-time arrhythmia detection on edge and wearable devices, requiring no labelled pathological data. Evaluated Flat VAE and LSTM-VAE architectures, then extended into a shallow Conv1D autoencoder with threshold-based anomaly detection for edge deployment.</p>
-        <div class="meta-line">Best Paper Award, IEEE CCPIS 2025 (co-authored with Dr. D. Ganga)</div>
-        <div class="link-row"><a href="https://doi.org/10.1109/ccpis65231.2025.11233885" target="_blank" rel="noopener">Read paper (DOI)</a></div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>AI-Based Bearing Fault Diagnosis Using Vibration Signals</h3><span class="kind">Mechanical &middot; Vibration</span></div>
-        <p>Bearing fault-diagnosis frameworks for electrical machines, progressing from classical ML and VAE-based approaches to 1D-CNN architectures with latent-space anomaly scoring. Includes class-conditional trust and anomaly-scoring methods for confidence quantification under uncertain operating conditions.</p>
-        <div class="meta-line">Published at VETOMAC 2025, IIT Guwahati (Springer Proceedings), 2 papers</div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>PPE Compliance Detection for Construction Sites (&ldquo;Eagle Eyes&rdquo;)</h3><span class="kind">Computer Vision &middot; Safety</span></div>
-        <p>A YOLO-based computer-vision system monitoring PPE compliance (helmet, vest) on construction sites in real time. Exported and benchmarked across ONNX, TensorFlow Lite, and TensorFlow.js for CPU, edge/mobile, and browser-based deployment respectively.</p>
-        <div class="meta-line">Published as a Springer LNCS book chapter, PREMI 2025, IIT Delhi</div>
-        <div class="link-row">
-          <a href="https://doi.org/10.1007/978-3-032-18480-1_7" target="_blank" rel="noopener">Read paper (DOI)</a>
-          <a href="https://github.com/83Gh0st/Eagle-eyes" target="_blank" rel="noopener">View code</a>
-        </div>
-      </div>
-
-      <div class="proj reveal">
-        <div class="proj-top"><h3>Multi-Modal Edge Data Processing for a Real-Time Landslide Early-Warning System</h3><span class="kind">Environmental &middot; Edge Computing</span></div>
-        <p>Co-authored research on processing multi-modal sensor data directly at the edge to support real-time landslide early-warning alerts.</p>
-        <div class="meta-line">Published at IEEE REACS 2025</div>
-        <div class="link-row"><a href="https://doi.org/10.1109/reacs67479.2025.11413382" target="_blank" rel="noopener">Read paper (DOI)</a></div>
-      </div>
-
-      <p class="muted" style="font-size:0.88rem; margin-top:20px;">More repositories at <a href="https://github.com/83Gh0st" target="_blank" rel="noopener">github.com/83Gh0st</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" id="publications">
-    <div class="wrap">
-      <div class="section-title">Publications</div>
-      <div class="reveal">
-        <div class="pub">
-          <div class="pub-title">Lightweight and Efficient Variational Autoencoder for Arrhythmia Detection</div>
-          <div class="pub-meta">Sasikumar, A., Ganga, D. &middot; Best Paper Award, IEEE CCPIS 2025 &middot; <a href="https://doi.org/10.1109/ccpis65231.2025.11233885" target="_blank" rel="noopener">DOI</a></div>
-        </div>
-        <div class="pub">
-          <div class="pub-title">Real-Time Detection of Personal Protective Equipment in Construction Sites Using YOLOv5: A Computer Vision-Based Safety Compliance Framework</div>
-          <div class="pub-meta">Sasikumar, A., Ganga, D., Ngullie, N. &middot; PREMI 2025, IIT Delhi &middot; Springer LNCS book chapter, 2026 &middot; <a href="https://doi.org/10.1007/978-3-032-18480-1_7" target="_blank" rel="noopener">DOI</a></div>
-        </div>
-        <div class="pub">
-          <div class="pub-title">Multi Modal Edge Data Processing for Real Time Landslide Early Warning System</div>
-          <div class="pub-meta">Ganga, D., Ngullie, N., Kumar, R., Sasikumar, A. &middot; IEEE REACS 2025 &middot; <a href="https://doi.org/10.1109/reacs67479.2025.11413382" target="_blank" rel="noopener">DOI</a></div>
-        </div>
-        <div class="pub">
-          <div class="pub-title">Two conference papers on AI-based bearing fault diagnosis</div>
-          <div class="pub-meta">Presented at VETOMAC 2025, IIT Guwahati; proceedings to be published by Springer</div>
-        </div>
-        <div class="pub">
-          <div class="pub-title">Intelligent Fault Classification of Rolling Bearings via Stacked BN-Augmented Bi-GRU</div>
-          <div class="pub-meta">International Conference on Advances in Information Engineering and Systems (ICAIES), 2025 &middot; Springer LNCS</div>
-        </div>
-      </div>
-      <div class="section-title" style="margin-top:32px;">Manuscripts in Review</div>
-      <ul class="review-list reveal">
-        <li>&ldquo;A One-Shot, Lightweight, High-Channel Shallow Edge-Ready Conv1D Autoencoder with Global Feature Summarization for Early and Efficient Diagnosis of Cardiovascular Disorders.&rdquo;</li>
-        <li>&ldquo;Edge Compatible Anomaly Scoring of 1D CNNs with Confidence Quantification for Explainable Fault Classification under Uncertain Conditions.&rdquo;</li>
-        <li>&ldquo;Trust-Gated Selective Classification for Bearing Fault Diagnosis via Class-Conditional Latent-Space Scoring.&rdquo;</li>
-        <li>&ldquo;Edge-Optimized Multi-Class Threat Detection Using YOLO: An Occlusion-Aware, CLAHE-Enhanced Framework for Real-Time Intelligent Surveillance.&rdquo;</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="education">
-    <div class="wrap">
-      <div class="section-title">Education</div>
-      <div class="reveal">
-        <div class="edu">
-          <div class="edu-head">
-            <span class="school">National Institute of Technology (NIT) Nagaland</span>
-            <span class="meta">2022 &ndash; 2026</span>
-          </div>
-          <div class="degree">B.Tech, Electrical &amp; Electronics Engineering &middot; CGPA: 9.24 / 10</div>
-          <div class="course">Relevant coursework: Control Systems, Signal Processing, Embedded Systems, Circuit Design, Power Electronics, Robotics.</div>
-        </div>
-        <div class="edu">
-          <div class="edu-head">
-            <span class="school">Indian Institute of Technology (IIT) Madras</span>
-            <span class="meta">2022 &ndash; 2028</span>
-          </div>
-          <div class="degree">BS, Data Science &amp; Applications (online degree) &middot; Status: Ongoing</div>
-          <div class="course">Relevant coursework: Machine Learning, Deep Learning, Data Structures &amp; Algorithms, Data Analysis, Programming, Tools in Data Science.</div>
-        </div>
-        <div class="edu-footnote">Higher Secondary: 98.8%, Calicut, Kerala</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="recognition">
-    <div class="wrap">
-      <div class="section-title">Leadership &amp; Awards</div>
-      <div class="rec-list reveal">
-        <div class="rec-item">
-          <div class="t">Secretary, Entrepreneurship &amp; Incubation Cell (IIC), NIT Nagaland</div>
-          <div class="d">Supported the planning and execution of innovation, entrepreneurship, and startup-focused events.</div>
-          <div class="d">Provided direct leadership and coordination across teams and stakeholders, driving the successful execution of programs of national importance involving significant budgets.</div>
-        </div>
-        <div class="rec-item">
-          <div class="t">Committee Member, IEEE Student Branch, NIT Nagaland</div>
-          <div class="d">Authored event reports and technical content; managed communications across web and social platforms.</div>
-        </div>
-        <div class="rec-item">
-          <div class="t">First Prize, Hackathon, NIT Nagaland</div>
-          <div class="d">November 2025.</div>
-        </div>
-        <div class="rec-item">
-          <div class="t">Best Paper Award, IEEE CCPIS 2025</div>
-          <div class="d">2nd International Conference on Circuits, Power &amp; Intelligent Systems.</div>
-        </div>
-        <div class="rec-item">
-          <div class="t">First Class with Distinction, B.Tech in Electrical &amp; Electronics Engineering</div>
-          <div class="d">National Institute of Technology (NIT) Nagaland.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+<section id="contact"><div class="w"><h2>Contact</h2><p class="sub">Open to research positions and PhD programs, applied AI/ML and software engineering roles, forward deployed and solutions engineering, and consulting or product work.</p>
+<div class="ct"><div><span>Email</span><a href="mailto:arjun3314508@gmail.com">arjun3314508@gmail.com</a></div><div><span>Phone (IN)</span>+91 85479 85276</div><div><span>Phone (UAE)</span>+971 56 211 6482</div><div><span>GitHub</span><a href="https://github.com/83Gh0st" target="_blank" rel="noopener">github.com/83Gh0st</a></div><div><span>LinkedIn</span><a href="https://www.linkedin.com/in/arjun-s-a884b8258/" target="_blank" rel="noopener">arjun-s-a884b8258</a></div><div><span>ORCID</span><a href="https://orcid.org/0009-0008-7897-6800" target="_blank" rel="noopener">0009-0008-7897-6800</a></div></div>
+</div></section>
 </main>
-
-<footer id="contact">
-  <div class="wrap">
-    <div class="section-title">Contact</div>
-    <p class="muted reveal">Open to Forward Deployed Engineering, Solutions Engineering, and Applied AI/ML roles. Based in Bengaluru, India, with hands-on UAE experience through Yokogawa.</p>
-    <div class="contact-list reveal" style="margin-top:20px;">
-      <div><span class="k">Email</span><a href="mailto:arjun3314508@gmail.com">arjun3314508@gmail.com</a></div>
-      <div><span class="k">Phone (IN)</span><span class="muted">+91 85479 85276</span></div>
-      <div><span class="k">Phone (UAE)</span><span class="muted">+971 56 211 6482</span></div>
-      <div><span class="k">GitHub</span><a href="https://github.com/83Gh0st" target="_blank" rel="noopener">github.com/83Gh0st</a></div>
-      <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/arjun-s-a884b8258/" target="_blank" rel="noopener">linkedin.com/in/arjun-s-a884b8258</a></div>
-      <div><span class="k">ORCID</span><span class="muted">0009-0008-7897-6800</span></div>
-    </div>
-    <div style="margin-top:26px;">
-      <a href="mailto:arjun3314508@gmail.com" class="btn btn-primary">Email me</a>
-    </div>
-    <div class="footer-note">&copy; 2026 Arjun Sasikumar</div>
-  </div>
-</footer>
-
+<footer><div class="w">© 2026 Arjun Sasikumar</div></footer>
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('mobile-open');
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('mobile-open');
-  }));
-
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => io.observe(el));
-
-  const sections = ['about','experience','skills','projects','publications','education','contact']
-    .map(id => document.getElementById(id)).filter(Boolean);
-  const navA = Array.from(navLinks.querySelectorAll('a'));
-  const navIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-      }
-    });
-  }, { rootMargin: '-40% 0px -50% 0px' });
-  sections.forEach(s => navIO.observe(s));
-
-  (function initCarousel(){
-    const track = document.getElementById('consultingTrack');
-    const dotsWrap = document.getElementById('consultingDots');
-    const prevBtn = document.getElementById('consultingPrev');
-    const nextBtn = document.getElementById('consultingNext');
-    const countEl = document.getElementById('consultingCount');
-    if (!track || !dotsWrap || !prevBtn || !nextBtn) return;
-
-    const slides = Array.from(track.children);
-    let index = 0;
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', 'Go to consulting project ' + (i + 1));
-      dot.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(dot);
-    });
-    const dots = Array.from(dotsWrap.children);
-
-    function update(){
-      track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-      if (countEl) countEl.textContent = (index + 1) + ' / ' + slides.length;
-    }
-    function goTo(i){
-      index = (i + slides.length) % slides.length;
-      update();
-    }
-
-    prevBtn.addEventListener('click', () => goTo(index - 1));
-    nextBtn.addEventListener('click', () => goTo(index + 1));
-
-    let touchStartX = null;
-    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', (e) => {
-      if (touchStartX === null) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-      touchStartX = null;
-    });
-
-    update();
-  })();
+const b=document.body,cs=document.querySelectorAll('.chip');
+cs.forEach(c=>c.onclick=()=>{b.dataset.m=c.dataset.m;cs.forEach(x=>x.setAttribute('aria-pressed',x===c))});
+const ln=[...document.querySelectorAll('#nv a')],io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)ln.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section').forEach(s=>io.observe(s));
 </script>
 </body>
 </html>
